@@ -1,5 +1,5 @@
 {
-  "name":"lv_port_esp32_arduino_ide",
+  "name":"lv_port_esp32_arduino",
   "description":"LittlevGL for ESP32 through Arduino IDE",
   "keywords":"display,gui",
   "authors":
