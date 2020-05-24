@@ -13,13 +13,17 @@ extern "C" {
 /*********************
  *      INCLUDES
  *********************/
-#include "lvgl_hw_config.h"
 
 /*********************
  *      DEFINES
  *********************/
 // DISPLAY PINS
 #define DISP_SPI_MOSI CONFIG_LVGL_DISP_SPI_MOSI
+#if defined (CONFIG_LV_DISPLAY_USE_SPI_MISO)
+    #define DISP_SPI_MISO CONFIG_LVGL_DISP_SPI_MISO
+#else
+    #define DISP_SPI_MISO (-1)
+#endif
 #define DISP_SPI_CLK CONFIG_LVGL_DISP_SPI_CLK
 #define DISP_SPI_CS CONFIG_LVGL_DISP_SPI_CS
 
@@ -55,7 +59,6 @@ extern "C" {
 /**********************
  *      TYPEDEFS
  **********************/
- 
 #if defined (CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_ILI9488)
 
 #define SPI_BUS_MAX_TRANSFER_SZ (DISP_BUF_SIZE * 3)
@@ -63,7 +66,8 @@ extern "C" {
 #elif defined (CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_ILI9341)  || \
       defined (CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_ST7789)   || \
       defined (CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_HX8357)   || \
-      defined (CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_SH1107)
+      defined (CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_SH1107)   || \
+      defined (CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_FT81X)
 
 #define SPI_BUS_MAX_TRANSFER_SZ (DISP_BUF_SIZE * 2)
 
@@ -87,6 +91,8 @@ extern "C" {
 #define SPI_TFT_CLOCK_SPEED_HZ  (40*1000*1000)
 #elif defined (CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_ILI9341)
 #define SPI_TFT_CLOCK_SPEED_HZ  (40*1000*1000)
+#elif defined (CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_FT81X)
+#define SPI_TFT_CLOCK_SPEED_HZ  (32*1000*1000)
 #else
 #define SPI_TFT_CLOCK_SPEED_HZ  (40*1000*1000)
 #endif
