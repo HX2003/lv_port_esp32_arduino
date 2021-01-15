@@ -55,7 +55,7 @@ typedef struct _disp_spi_read_data {
  **********************/
 void disp_spi_add_device(spi_host_device_t host);
 void disp_spi_add_device_config(spi_host_device_t host, spi_device_interface_config_t *devcfg);
-void disp_spi_transaction(const uint8_t *data, uint16_t length,
+void disp_spi_transaction(const uint8_t *data, uint32_t length,
     disp_spi_send_flag_t flags, disp_spi_read_data *out, uint64_t addr);
 void disp_wait_for_pending_transactions(void);
 void disp_spi_acquire(void);
@@ -65,7 +65,7 @@ static inline void disp_spi_send_data(uint8_t *data, uint16_t length) {
     disp_spi_transaction(data, length, DISP_SPI_SEND_POLLING, NULL, 0);
 }
 
-static inline void disp_spi_send_colors(uint8_t *data, uint16_t length) {
+static inline void disp_spi_send_colors(uint8_t *data, uint32_t length) {
     disp_spi_transaction(data, length,
         DISP_SPI_SEND_QUEUED | DISP_SPI_SIGNAL_FLUSH,
         NULL, 0);

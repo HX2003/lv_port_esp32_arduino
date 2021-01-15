@@ -31,6 +31,8 @@ extern "C" {
 #include "ssd1306.h"
 #elif defined CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_FT81X
 #include "FT81x.h"
+#elif defined CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_GC9A01A
+#include "gc9a01a.h"
 #endif
 
 /*********************

@@ -71,6 +71,8 @@
 #define LV_COLOR_16_SWAP   1
 #elif defined CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_FT81X
 #define LV_COLOR_16_SWAP   0
+#elif defined CONFIG_LVGL_TFT_DISPLAY_CONTROLLER_GC9A01A
+#define LV_COLOR_16_SWAP   1
 #endif
 
 
@@ -88,7 +90,7 @@
 
 /* Default display refresh period.
  * Can be changed in the display driver (`lv_disp_drv_t`).*/
-#define LV_DISP_DEF_REFR_PERIOD      15      /*[ms]*/
+#define LV_DISP_DEF_REFR_PERIOD      20      /*[ms]*/
 
 /* Dot Per Inch: used to initialize default sizes.
  * E.g. a button with width = LV_DPI / 2 -> half inch wide
@@ -198,7 +200,7 @@ typedef void * lv_anim_user_data_t;
  * LV_SHADOW_CACHE_SIZE is the max. shadow size to buffer,
  * where shadow size is `shadow_width + radius`
  * Caching has LV_SHADOW_CACHE_SIZE^2 RAM cost*/
-#define LV_SHADOW_CACHE_SIZE    0
+#define LV_SHADOW_CACHE_SIZE    64
 #endif
 
 /* 1: Use other blend modes than normal (`LV_BLEND_MODE_...`)*/
@@ -218,7 +220,7 @@ typedef void * lv_group_user_data_t;
 #endif  /*LV_USE_GROUP*/
 
 /* 1: Enable GPU interface*/
-#define LV_USE_GPU              1   /*Only enables `gpu_fill_cb` and `gpu_blend_cb` in the disp. drv- */
+#define LV_USE_GPU              0   /*Only enables `gpu_fill_cb` and `gpu_blend_cb` in the disp. drv- */
 #define LV_USE_GPU_STM32_DMA2D  0
 
 /* 1: Enable file system (might be required for images */
@@ -229,10 +231,10 @@ typedef void * lv_fs_drv_user_data_t;
 #endif
 
 /*1: Add a `user_data` to drivers and objects*/
-#define LV_USE_USER_DATA        0
+#define LV_USE_USER_DATA        1
 
 /*1: Show CPU usage and FPS count in the right bottom corner*/
-#define LV_USE_PERF_MONITOR     1
+#define LV_USE_PERF_MONITOR     0
 
 /*1: Use the functions and types from the older API if possible */
 #define LV_USE_API_EXTENSION_V6  1
@@ -378,6 +380,7 @@ typedef void * lv_indev_drv_user_data_t; /*Type of user data in the input device
 
 /* Montserrat fonts with bpp = 4
  * https://fonts.google.com/specimen/Montserrat  */
+#define LV_FONT_MONTSERRAT_10    CONFIG_LV_FONT_MONTSERRAT_10
 #define LV_FONT_MONTSERRAT_12    CONFIG_LV_FONT_MONTSERRAT_12
 #define LV_FONT_MONTSERRAT_14    CONFIG_LV_FONT_MONTSERRAT_14
 #define LV_FONT_MONTSERRAT_16    CONFIG_LV_FONT_MONTSERRAT_16

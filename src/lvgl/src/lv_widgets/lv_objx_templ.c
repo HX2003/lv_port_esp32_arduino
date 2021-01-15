@@ -9,13 +9,13 @@
  *                    TEMPL -> object short name with upper case (e.g. BTN, LABEL etc.)
  *
  * You can remove the defined() clause from the #if statement below. This exists because
- * LV_USE_TEMPL is not in lv_conf.h or lv_conf_templ.h by default.
+ * LV_USE_TEMPL is not in lv_conf.h or lv_conf_template.h by default.
  */
 
 /*********************
  *      INCLUDES
  *********************/
-#include "../lv_core/lv_debug.h"
+#include "../lv_misc/lv_debug.h"
 //#include "lv_templ.h" /*TODO uncomment this*/
 
 #if defined(LV_USE_TEMPL) && LV_USE_TEMPL != 0
