@@ -1,9 +1,10 @@
-# LittlevGL ESP32 Arduino library
+# LVGL ESP32 Arduino library
 
-LittlevGL ported to the ESP32 as an Arduino library.
+LVGL ported to the ESP32 as an Arduino library, will not be maintained.
 
 Supported display controllers:
 
+- GC9A01A (currently configured)
 - ILI9341
 - ILI9488 (not tested)
 - ILI9486 (not tested)
